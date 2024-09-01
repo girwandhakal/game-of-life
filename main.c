@@ -15,8 +15,17 @@ int main(int argc, char* argv[])
     }
     int size_of_board = atoi(argv[1]);
     int num_of_generations = atoi(argv[2]);
+    int generations = 0;
+    char** cur_board = initarray(allocarray(size_of_board,size_of_board),size_of_board,size_of_board); // create board and initialize
+    char** next_board;
 
-    double** grid = initarray(allocarray(size_of_board,size_of_board),size_of_board,size_of_board);
+    while(generations < num_of_generations && (cur_board != next_board))
+    {
+        // char** createNextState(char** curBoard)
+
+
+    }
+
 
 
     return 0;

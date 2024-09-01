@@ -16,8 +16,8 @@ double **allocarray(int P, int Q) {
   int i;
   double *p, **a;
   
-  p = (double *)malloc(P*Q*sizeof(double));
-  a = (double **)malloc(P*sizeof(double*));
+  p = (char *)malloc(P*Q*sizeof(char));
+  a = (char **)malloc(P*sizeof(char*));
 
   if (p == NULL || a == NULL) 
     printf("Error allocating memory\n");
@@ -40,3 +40,45 @@ double **initarray(double **a, int mrows, int ncols) {
   return a;
 }
 
+int num_neighbors(double** board, int size, int r, int c){
+  int i,j,k,rd,cd;
+  int count = 0;
+  int directions[][2] = 
+  {
+    {1,0},
+    {-1,0},
+    {0,1},
+    {0,-1},
+    {1,1},
+    {1,-1},
+    {-1,1},
+    {-1,-1}
+  };
+
+    for(k = 0; k < 7; k++)
+    {
+      rd = r + directions[k][0];
+      cd = c + directions[k][1];
+      if(rd >= 0 && cd >= 0 && rd < size && cd < size && board[rd][cd] == '1') // check if it is within bounds
+      {
+        count++;
+      }
+    }
+  return count;
+
+}
+
+
+ char** createNextState(char** curBoard, int size){
+  int i,j,liveCount;
+  for(i = 0; i < size; i++)
+  {
+    for(j = 0; j < size; j++)
+    {
+      liveCount = num_neighbors(curBoard, size,i,j);
+      if(liveCount < )
+
+    }
+  }
+
+ }

@@ -32,11 +32,11 @@ double **allocarray(int P, int Q) {
 //initialize the array with either a 0 or 1
 double **initarray(double **a, int mrows, int ncols) {
   int i,j;
-  srand48(time(NULL));
+  srand(time(NULL));
 
   for (i=0; i<mrows; i++)
     for (j=0; j<ncols; j++)
-      a[i][j] = drand48() > 0.5 ? 0 : 1;  
+      a[i][j] = rand()%2;
   return a;
 }
 

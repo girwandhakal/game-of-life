@@ -30,7 +30,7 @@ double **allocarray(int P, int Q) {
 }
 
 //initialize the array with either a 0 or 1
-double **initarray(double **a, int mrows, int ncols, double value) {
+double **initarray(double **a, int mrows, int ncols) {
   int i,j;
   srand48(time(NULL));
 

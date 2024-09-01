@@ -3,6 +3,6 @@
 
 double gettime(void);
 double **allocarray(int P, int Q);
-double **initarray(double **a, int mrows, int ncols, double value);
+double **initarray(double **a, int mrows, int ncols);
 
 #endif

@@ -16,6 +16,8 @@ int main(int argc, char* argv[])
     int size_of_board = atoi(argv[1]);
     int num_of_generations = atoi(argv[2]);
 
+    double** grid = initarray(allocarray(size_of_board,size_of_board),size_of_board,size_of_board);
+
 
     return 0;
 }

@@ -10,9 +10,9 @@ This is an implementation of the 'Game of Life' by John Conway. The main rules t
 
 2. If a cell is “dead” in the current generation, then if there are exactly three neighbors "alive," it will change to the "alive" state in the next generation, as if the neighboring cells gave birth to a new organism.
 
-# To Run
+# To Compile and Run
 
 ```bash
     gcc main.c game_of_life.c
     ./a matrix_size number_of_generations
-    ```
+    

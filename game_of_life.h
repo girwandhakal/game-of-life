@@ -3,7 +3,10 @@
 
 double gettime(void);
 char **allocarray(int P, int Q);
-char **initarray(double **a, int mrows, int ncols);
-int num_neighbors(double** board, int size, int r, int c); // count num of neighbors
-char** createNextState(char** curBoard, int size); 
+char **initarray(char **a, int mrows, int ncols);
+int num_neighbors(char** board, int size, int r, int c); // count num of neighbors
+char** createNextState(char** curBoard, int size); // generates next state given current State
+char** makeCopy(char** board, int size); 
+void printarray(char **a, int mrows, int ncols);
+
 #endif

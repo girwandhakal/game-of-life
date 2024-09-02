@@ -16,3 +16,10 @@ This is an implementation of the 'Game of Life' by John Conway. The main rules t
     gcc main.c game_of_life.c
     ./a matrix_size number_of_generations
     
+```
+# To run test cases 
+
+```bash
+    gcc test.c game_of_life.c
+    ./a 
+```

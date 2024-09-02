@@ -16,18 +16,24 @@ int main(int argc, char* argv[])
     int size_of_board = atoi(argv[1]);
     int num_of_generations = atoi(argv[2]);
     int generations = 0;
+
+
     printf("Created generation %d \n", generations);
     char** cur_board = initarray(allocarray(size_of_board,size_of_board),size_of_board,size_of_board); // create board and initialize
     printarray(cur_board, size_of_board,size_of_board);
-    char** nextState; 
-    while(generations < num_of_generations && (cur_board != nextState))
+    char** nextState = createNextState(cur_board, size_of_board);
+    char** temp;
+
+    while(generations < num_of_generations  && (cur_board != nextState))
     {
-        cur_board = nextState;
-        printf("%d\n",__LINE__);
-        nextState = createNextState(cur_board, size_of_board);
-        printf("%d\n",__LINE__);
         generations++;
         printf("Created generation %d \n", generations);
+        printarray(cur_board, size_of_board,size_of_board);
+        temp = cur_board;
+        cur_board = nextState;
+        nextState = createNextState(cur_board, size_of_board);
+
+        
         //printarray(nextState, size_of_board,size_of_board);
     }
     return 0;

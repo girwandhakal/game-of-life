@@ -61,9 +61,9 @@ char **makeCopy(char** board, int size)
     rowCopy[i] = &copy[i*size];
     for(j = 0; j < size; j++)
     {
-      printf("in makeCopy() line : %d\n",__LINE__);
+      //printf("in makeCopy() line : %d\n",__LINE__);
       rowCopy[i][j] = board[i][j];
-      printf("%d\n",__LINE__);
+      //printf("%d\n",__LINE__);
     }
   }
   return rowCopy;
@@ -100,9 +100,7 @@ int num_neighbors(char** board, int size, int r, int c){
 char** createNextState(char** curBoard, int size){
 
   int i,j,liveCount;
-  printf("%d\n",__LINE__);
   char** nextState = makeCopy(curBoard, size);
-  printf("%d\n",__LINE__);
   //mark either dead or live in next state
   for(i = 0; i < size; i++)
   {
@@ -127,18 +125,18 @@ char** createNextState(char** curBoard, int size){
     }
   }
   
-  //make changes in the next state
+  //replace X's and L's in the next state
   for(i = 0; i < size; i++)
   {
     for(j = 0; j < size; j++)
     {
       if(nextState[i][j] == 'X')
       {
-        nextState[i][j] == '1';
+        nextState[i][j] = '0';
       }
-      if(nextState[i][j] == 'L')
+      else if(nextState[i][j] == 'L')
       {
-        nextState[i][j] == 'O';
+        nextState[i][j] = '1';
       }
     }
   }

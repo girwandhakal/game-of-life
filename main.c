@@ -27,7 +27,6 @@ int main(int argc, char* argv[])
 
     while(generations < num_of_generations  && !isEqual(curState,nextState, size_of_board))
     {
-        printf("%d", __LINE__);
         generations++;
         //printf("Created generation %d \n", generations);
         //printarray(curState, size_of_board,size_of_board);
@@ -36,11 +35,11 @@ int main(int argc, char* argv[])
         nextState = createNextState(curState, size_of_board);
 
         // free the curState
-        for(int i = 0; i < size_of_board; i++)
-        {
-            free(temp[i]);
-        }
-        free(temp);
+        // for(int i = 0; i < size_of_board; i++)
+        // {
+        //     free(temp[i]);
+        // }
+        // free(temp);
         //printarray(nextState, size_of_board,size_of_board);
     }
     double endTime = gettime();

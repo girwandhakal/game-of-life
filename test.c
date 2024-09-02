@@ -100,10 +100,65 @@ void createNextState_test(){
 
 }
 
+void isEqual_test(){
+    char* array1 = (char*)malloc(sizeof(char) * 3  * 3);
+    if(array1 == NULL)
+    {
+        printf("Error allocating memory\n");
+        exit(0);
+    }
+    char** board1 = (char**)malloc(sizeof(char*) * 3);
+    if(board1 == NULL)
+    {
+        printf("Error allocating memory\n");
+        free(array1);
+        exit(0);
+    }
+
+    for(int i = 0; i < 3; i++){
+        board1[i] = &array1[i*3];
+    }
+
+
+    board1[0][0] = '0'; board1[0][1] = '1'; board1[0][2] = '0';
+    board1[1][0] = '1'; board1[1][1] = '1'; board1[1][2] = '0';
+    board1[2][0] = '0'; board1[2][1] = '1'; board1[2][2] = '1';
+
+    char* array2 = (char*)malloc(sizeof(char) * 3  * 3);
+    if(array2 == NULL)
+    {
+        printf("Error allocating memory\n");
+        exit(0);
+    }
+    char** board2 = (char**)malloc(sizeof(char*) * 3);
+    if(board2 == NULL)
+    {
+        printf("Error allocating memory\n");
+        free(array2);
+        exit(0);
+    }
+
+    for(int i = 0; i < 3; i++){
+        board2[i] = &array2[i*3];
+    }
+
+
+    board2[0][0] = '0'; board2[0][1] = '1'; board2[0][2] = '0';
+    board2[1][0] = '1'; board2[1][1] = '1'; board2[1][2] = '0';
+    board2[2][0] = '0'; board2[2][1] = '1'; board2[2][2] = '1';
+
+    assert(board1[1][1] == board2[1][1]);
+    assert(board1[2][2] == board2[2][2]);
+    assert(board1[0][1] == board2[0][1]);
+    printf("isEqual() : All tests passed \n");
+
+}
+
 int main(){
     makeCopy_test();
     num_neighbors_test();
     createNextState_test();
+    isEqual_test();
     return 0;
 
 }

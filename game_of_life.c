@@ -153,3 +153,19 @@ void printarray(char **a, int mrows, int ncols) {
     printf("\n");
   }
 }
+
+
+bool isEqual(char** board1, char** board2, int size){
+  int i, j;
+  for(i = 0; i < size; i++)
+  {
+    for(j = 0; j < size; j++)
+    {
+      if(board1[i][j] != board2[i][j])
+      {
+        return false;
+      }
+    }
+  }
+  return true;
+}

@@ -20,21 +20,27 @@ int main(int argc, char* argv[])
 
 
     //printf("Created generation %d \n", generations);
-    char** cur_board = initarray(allocarray(size_of_board,size_of_board),size_of_board,size_of_board); // create board and initialize
-    //printarray(cur_board, size_of_board,size_of_board);
-    char** nextState = createNextState(cur_board, size_of_board);
+    char** curState = initarray(allocarray(size_of_board,size_of_board),size_of_board,size_of_board); // create board and initialize
+    //printarray(curState, size_of_board,size_of_board);
+    char** nextState = createNextState(curState, size_of_board);
     char** temp;
 
-    while(generations < num_of_generations  && (cur_board != nextState))
+    while(generations < num_of_generations  && !isEqual(curState,nextState, size_of_board))
     {
+        printf("%d", __LINE__);
         generations++;
         //printf("Created generation %d \n", generations);
-        //printarray(cur_board, size_of_board,size_of_board);
-        temp = cur_board;
-        cur_board = nextState;
-        nextState = createNextState(cur_board, size_of_board);
+        //printarray(curState, size_of_board,size_of_board);
+        temp = curState;
+        curState = nextState;
+        nextState = createNextState(curState, size_of_board);
 
-        
+        // free the curState
+        for(int i = 0; i < size_of_board; i++)
+        {
+            free(temp[i]);
+        }
+        free(temp);
         //printarray(nextState, size_of_board,size_of_board);
     }
     double endTime = gettime();

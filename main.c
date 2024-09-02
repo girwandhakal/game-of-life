@@ -19,17 +19,17 @@ int main(int argc, char* argv[])
     int generations = 0;
 
 
-    printf("Created generation %d \n", generations);
+    //printf("Created generation %d \n", generations);
     char** cur_board = initarray(allocarray(size_of_board,size_of_board),size_of_board,size_of_board); // create board and initialize
-    printarray(cur_board, size_of_board,size_of_board);
+    //printarray(cur_board, size_of_board,size_of_board);
     char** nextState = createNextState(cur_board, size_of_board);
     char** temp;
 
     while(generations < num_of_generations  && (cur_board != nextState))
     {
         generations++;
-        printf("Created generation %d \n", generations);
-        printarray(cur_board, size_of_board,size_of_board);
+        //printf("Created generation %d \n", generations);
+        //printarray(cur_board, size_of_board,size_of_board);
         temp = cur_board;
         cur_board = nextState;
         nextState = createNextState(cur_board, size_of_board);

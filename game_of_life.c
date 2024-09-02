@@ -84,7 +84,7 @@ int num_neighbors(char** board, int size, int r, int c){
     {-1,-1}
   };
 
-    for(k = 0; k < 7; k++)
+    for(k = 0; k < 8; k++)
     {
       rd = r + directions[k][0];
       cd = c + directions[k][1];

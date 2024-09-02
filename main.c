@@ -7,6 +7,7 @@
 
 int main(int argc, char* argv[])
 {
+    double startTime = gettime();
     //check arg count
     if(argc != 3)
     {
@@ -36,5 +37,7 @@ int main(int argc, char* argv[])
         
         //printarray(nextState, size_of_board,size_of_board);
     }
+    double endTime = gettime();
+    printf("Time taken = %lf seconds\n", endTime - startTime);
     return 0;
 }

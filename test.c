@@ -65,7 +65,6 @@ void num_neighbors_test(){
 
 }
 
-
 void createNextState_test(){
     char* array = (char*)malloc(sizeof(char) * 3  * 3);
     if(array == NULL)
@@ -105,7 +104,6 @@ int main(){
     makeCopy_test();
     num_neighbors_test();
     createNextState_test();
-
     return 0;
 
 }

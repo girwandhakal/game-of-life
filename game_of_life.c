@@ -29,6 +29,7 @@ char **allocarray(int P, int Q) {
   return a;
 }
 
+
 //initialize the array with either a 0 or 1
 char **initarray(char **a, int mrows, int ncols) {
   int i,j;
@@ -40,6 +41,7 @@ char **initarray(char **a, int mrows, int ncols) {
   return a;
 }
 
+//creates deep copy of board
 char **makeCopy(char** board, int size)
 {
   int i,j;
@@ -99,44 +101,28 @@ int num_neighbors(char** board, int size, int r, int c){
 
 char** createNextState(char** curBoard, int size){
 
-  int i,j,liveCount;
-  char** nextState = makeCopy(curBoard, size);
+  int i,j,live_neighbor_count;
+  char** nextState = makeCopy(curBoard, size); // more memory allocated here
   //mark either dead or live in next state
   for(i = 0; i < size; i++)
   {
     for(j = 0; j < size; j++)
     {
-      liveCount = num_neighbors(curBoard, size,i,j);
+      live_neighbor_count = num_neighbors(curBoard, size,i,j);
       if(curBoard[i][j] == '1')
       {
         // live cell if more than 3 or less than 2 live neigbors die
-        if(liveCount < 2 || liveCount > 3){
-          nextState[i][j] = 'X';
+        if(live_neighbor_count < 2 || live_neighbor_count > 3){
+          nextState[i][j] = '0';
         }
       }
       else
       {
         // dead cell if has 3 live neigbors comes alive next state
-        if(liveCount == 3)
+        if(live_neighbor_count == 3)
         {
-          nextState[i][j] = 'L';
+          nextState[i][j] = '1';
         }
-      }
-    }
-  }
-  
-  //replace X's and L's in the next state
-  for(i = 0; i < size; i++)
-  {
-    for(j = 0; j < size; j++)
-    {
-      if(nextState[i][j] == 'X')
-      {
-        nextState[i][j] = '0';
-      }
-      else if(nextState[i][j] == 'L')
-      {
-        nextState[i][j] = '1';
       }
     }
   }
@@ -168,4 +154,12 @@ bool isEqual(char** board1, char** board2, int size){
     }
   }
   return true;
+}
+
+void freeArray(char** array)
+{
+    if (array != NULL) {
+        free(array[0]);  // Free the contiguous memory block that holds the actual data
+        free(array);      // Free the memory block that holds the pointers to each row
+    }
 }

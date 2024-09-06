@@ -19,28 +19,16 @@ int main(int argc, char* argv[])
     int generations = 0;
 
 
-    //printf("Created generation %d \n", generations);
     char** curState = initarray(allocarray(size_of_board,size_of_board),size_of_board,size_of_board); // create board and initialize
-    //printarray(curState, size_of_board,size_of_board);
-    char** nextState = createNextState(curState, size_of_board);
-    char** temp;
-
+    char** nextState = createNextState(curState, size_of_board); // create first generation  
     while(generations < num_of_generations  && !isEqual(curState,nextState, size_of_board))
     {
+
         generations++;
-        //printf("Created generation %d \n", generations);
-        //printarray(curState, size_of_board,size_of_board);
-        temp = curState;
         curState = nextState;
         nextState = createNextState(curState, size_of_board);
-
-        // free the curState
-        // for(int i = 0; i < size_of_board; i++)
-        // {
-        //     free(temp[i]);
-        // }
-        // free(temp);
-        //printarray(nextState, size_of_board,size_of_board);
+        printf("%d\n",__LINE__);
+        freeArray(curState);
     }
     double endTime = gettime();
     printf("Time taken = %lf seconds\n", endTime - startTime);

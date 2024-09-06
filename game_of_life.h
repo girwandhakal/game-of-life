@@ -10,5 +10,6 @@ char** createNextState(char** curBoard, int size); // generates next state given
 char** makeCopy(char** board, int size); 
 bool isEqual(char** board1, char** board2, int size);
 void printarray(char **a, int mrows, int ncols);
+void freeArray(char** array);
 
 #endif

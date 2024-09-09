@@ -20,11 +20,10 @@ int main(int argc, char* argv[])
     bool changed = false;
     //char** temp;
     char** curState = initarray(allocarray(size_of_board,size_of_board),size_of_board,size_of_board); // create board and initialize
-    //char** nextState = createNextState(curState, size_of_board); // create first generation  
+    //createNextState(curState, size_of_board, &changed); // create first generation  
     while(generations < num_of_generations  /*&& !isEqual(curState,nextState, size_of_board)*/)
     {
         changed = false;
-        generations++;
         // temp = curState;
         // curState = nextState;
         createNextState(curState, size_of_board, &changed);
@@ -32,6 +31,7 @@ int main(int argc, char* argv[])
         {
             break;
         }
+        generations++;
         //freeArray(temp);
     }
     freeArray(curState);

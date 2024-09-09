@@ -71,6 +71,7 @@ char **makeCopy(char **board, int size)
   return rowCopy;
 }
 
+//returns number of live neighbors
 int num_neighbors(char **board, int size, int r, int c)
 {
   int i, j, k, rd, cd;

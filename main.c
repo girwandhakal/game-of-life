@@ -17,19 +17,24 @@ int main(int argc, char* argv[])
     int size_of_board = atoi(argv[1]);
     int num_of_generations = atoi(argv[2]);
     int generations = 0;
-
-    char** temp;
+    bool changed = false;
+    //char** temp;
     char** curState = initarray(allocarray(size_of_board,size_of_board),size_of_board,size_of_board); // create board and initialize
-    char** nextState = createNextState(curState, size_of_board); // create first generation  
-    while(generations < num_of_generations  && !isEqual(curState,nextState, size_of_board))
+    //char** nextState = createNextState(curState, size_of_board); // create first generation  
+    while(generations < num_of_generations  /*&& !isEqual(curState,nextState, size_of_board)*/)
     {
-
+        changed = false;
         generations++;
-        temp = curState;
-        curState = nextState;
-        nextState = createNextState(curState, size_of_board);
-        freeArray(temp);
+        // temp = curState;
+        // curState = nextState;
+        createNextState(curState, size_of_board, &changed);
+        if(!changed)
+        {
+            break;
+        }
+        //freeArray(temp);
     }
+    freeArray(curState);
     double endTime = gettime();
     printf("Time taken = %lf seconds\n", endTime - startTime);
     return 0;

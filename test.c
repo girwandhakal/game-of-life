@@ -37,16 +37,16 @@ void num_neighbors_test(){
 void createNextState_test(){
     char** board = allocarray(3,3);
 
-
+    bool changed = false;
     board[0][0] = '0'; board[0][1] = '1'; board[0][2] = '0';
     board[1][0] = '1'; board[1][1] = '1'; board[1][2] = '0';
     board[2][0] = '0'; board[2][1] = '1'; board[2][2] = '1';
 
-    char** testState = createNextState(board,3);
+    createNextState(board,3,&changed);
 
-    assert(testState[0][0] == '1');
-    assert(testState[2][0] == '1');
-    assert(testState[1][1] == '0');
+    assert(board[0][0] == '1');
+    assert(board[2][0] == '1');
+    assert(board[1][1] == '0');
     printf("createNextState() : All tests passed \n");
 
 }
@@ -84,7 +84,7 @@ int main(){
     makeCopy_test();
     num_neighbors_test();
     createNextState_test();
-    isEqual_test();
+    //isEqual_test();
     return 0;
 
 }

@@ -18,17 +18,17 @@ int main(int argc, char* argv[])
     int num_of_generations = atoi(argv[2]);
     int generations = 0;
 
-
+    char** temp;
     char** curState = initarray(allocarray(size_of_board,size_of_board),size_of_board,size_of_board); // create board and initialize
     char** nextState = createNextState(curState, size_of_board); // create first generation  
     while(generations < num_of_generations  && !isEqual(curState,nextState, size_of_board))
     {
 
         generations++;
+        temp = curState;
         curState = nextState;
         nextState = createNextState(curState, size_of_board);
-        printf("%d\n",__LINE__);
-        freeArray(curState);
+        freeArray(temp);
     }
     double endTime = gettime();
     printf("Time taken = %lf seconds\n", endTime - startTime);

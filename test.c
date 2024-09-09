@@ -48,8 +48,6 @@ void createNextState_test(){
     assert(testState[2][0] == '1');
     assert(testState[1][1] == '0');
     printf("createNextState() : All tests passed \n");
-    
-
 
 }
 
@@ -58,7 +56,6 @@ void isEqual_test(){
     board1[0][0] = '0'; board1[0][1] = '1'; board1[0][2] = '0';
     board1[1][0] = '1'; board1[1][1] = '1'; board1[1][2] = '0';
     board1[2][0] = '0'; board1[2][1] = '1'; board1[2][2] = '1';
-
 
     char** board2 = allocarray(3,3);
     board2[0][0] = '0'; board2[0][1] = '1'; board2[0][2] = '0';
@@ -70,11 +67,17 @@ void isEqual_test(){
     board3[1][0] = '0'; board3[1][1] = '0'; board3[1][2] = '1';
     board3[2][0] = '0'; board3[2][1] = '1'; board3[2][2] = '1';
 
+    char** board4 = allocarray(3,3);
+    board4[0][0] = '0'; board4[0][1] = '1'; board4[0][2] = '1';
+    board4[1][0] = '0'; board4[1][1] = '0'; board4[1][2] = '1';
+    board4[2][0] = '0'; board4[2][1] = '1'; board4[2][2] = '1';
+
     assert(isEqual(board1, board2, 3) == true);
     assert(isEqual(board1, board3, 3) == false);
     assert(isEqual(board2, board3, 3) == false);
+    assert(isEqual(board3, board4, 3) == true);
+    
     printf("isEqual() : All tests passed \n");
-
 }
 
 int main(){

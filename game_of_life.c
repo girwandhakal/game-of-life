@@ -63,9 +63,7 @@ char **makeCopy(char** board, int size)
     rowCopy[i] = &copy[i*size];
     for(j = 0; j < size; j++)
     {
-      //printf("in makeCopy() line : %d\n",__LINE__);
       rowCopy[i][j] = board[i][j];
-      //printf("%d\n",__LINE__);
     }
   }
   return rowCopy;
@@ -88,6 +86,7 @@ int num_neighbors(char** board, int size, int r, int c){
 
     for(k = 0; k < 8; k++)
     {
+      //new index
       rd = r + directions[k][0];
       cd = c + directions[k][1];
       if(rd >= 0 && cd >= 0 && rd < size && cd < size && (board[rd][cd] == '1' || board[rd][cd] == 'X')) // check if it is within bounds
@@ -127,8 +126,7 @@ char** createNextState(char** curBoard, int size){
     }
   }
   return nextState;
-
- }
+}
 
 void printarray(char **a, int mrows, int ncols) {
   int i,j;
@@ -139,7 +137,6 @@ void printarray(char **a, int mrows, int ncols) {
     printf("\n");
   }
 }
-
 
 bool isEqual(char** board1, char** board2, int size){
   int i, j;

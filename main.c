@@ -1,3 +1,14 @@
+/*
+ Name: Girwan Dhakal
+ Email: gdhakal@crimson.ua.edu
+ Course Section: CS 481 
+ Homework #: 1
+ Instructions to compile the program: gcc -Wall -O main.c game_of_life.c
+ Instructions to run the program: ./a board_size num_of_generations
+*/
+
+
+
 #include<stdlib.h>
 #include<stdio.h>
 #include<stdbool.h>
@@ -19,6 +30,7 @@ int main(int argc, char* argv[])
     int generations = 0;
     bool changed = false;
     char** curState = initarray(allocarray(size_of_board,size_of_board),size_of_board,size_of_board); 
+
     while(generations < num_of_generations)
     {
         changed = false;
@@ -29,6 +41,7 @@ int main(int argc, char* argv[])
         }
         generations++;
     }
+    
     freeArray(curState);
     double endTime = gettime();
     printf("Time taken = %lf seconds\n", endTime - startTime);

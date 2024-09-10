@@ -1,3 +1,13 @@
+/*
+ Name: Girwan Dhakal
+ Email: gdhakal@crimson.ua.edu
+ Course Section: CS 481 
+ Homework #: 1
+ Instructions to compile the program: gcc -Wall -O main.c game_of_life.c
+ Instructions to run the program: ./a board_size num_of_generations
+*/
+
+
 #include "game_of_life.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -74,7 +84,7 @@ char **makeCopy(char **board, int size)
 //returns number of live neighbors
 int num_neighbors(char **board, int size, int r, int c)
 {
-  int i, j, k, rd, cd;
+  int k, rd, cd;
   int count = 0;
   int directions[][2] =
       {
@@ -104,7 +114,6 @@ void createNextState(char **curBoard, int size, bool *changed)
 {
 
   int i, j, live_neighbor_count;
-  // char** nextState = makeCopy(curBoard, size); // more memory allocated here
   // mark either dead or live in next state
   for (i = 0; i < size; i++)
   {

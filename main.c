@@ -18,21 +18,16 @@ int main(int argc, char* argv[])
     int num_of_generations = atoi(argv[2]);
     int generations = 0;
     bool changed = false;
-    //char** temp;
-    char** curState = initarray(allocarray(size_of_board,size_of_board),size_of_board,size_of_board); // create board and initialize
-    //createNextState(curState, size_of_board, &changed); // create first generation  
-    while(generations < num_of_generations  /*&& !isEqual(curState,nextState, size_of_board)*/)
+    char** curState = initarray(allocarray(size_of_board,size_of_board),size_of_board,size_of_board); 
+    while(generations < num_of_generations)
     {
         changed = false;
-        // temp = curState;
-        // curState = nextState;
         createNextState(curState, size_of_board, &changed);
         if(!changed)
         {
             break;
         }
         generations++;
-        //freeArray(temp);
     }
     freeArray(curState);
     double endTime = gettime();
